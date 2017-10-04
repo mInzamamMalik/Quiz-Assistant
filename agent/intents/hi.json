@@ -1,0 +1,53 @@
+{
+  "id": "92fddd43-d138-4ff1-9bb1-1d402a4cc327",
+  "name": "hi",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": "simple_response",
+          "platform": "google",
+          "lang": "en",
+          "textToSpeech": "hi i\u0027m quiz assistant, how may i help you"
+        },
+        {
+          "type": "basic_card",
+          "platform": "google",
+          "lang": "en",
+          "title": "profile image",
+          "subtitle": "no subtitle",
+          "formattedText": "some text here",
+          "image": {
+            "url": "https://beebom-redkapmedia.netdna-ssl.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg"
+          },
+          "buttons": [
+            {
+              "title": "web link title",
+              "openUrlAction": {
+                "url": "http://google.com"
+              }
+            }
+          ]
+        },
+        {
+          "type": 0,
+          "lang": "en",
+          "speech": "hi i\u0027m quiz assistant, how may i help you - default"
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1507129731,
+  "fallbackIntent": false,
+  "events": []
+}
