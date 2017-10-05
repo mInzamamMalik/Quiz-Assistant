@@ -10,14 +10,16 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { OauthComponent } from './oauth/oauth.component';
+import { IntroComponent } from './intro/intro.component';
 
 const appRoutes: Routes = [
-  { path: '', component: AppComponent },
+ 
+  { path: '', component: IntroComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'oauth', component: OauthComponent },
 
-  // { path: '**', component: AppComponent }
+  { path: '**', component: IntroComponent }
 ];
 
 
@@ -26,7 +28,8 @@ const appRoutes: Routes = [
     AppComponent,
     LoginComponent,
     SignupComponent,
-    OauthComponent
+    OauthComponent,
+    IntroComponent
   ],
   imports: [
     RouterModule.forRoot( //for routing
