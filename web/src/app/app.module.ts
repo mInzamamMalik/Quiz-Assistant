@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { RouterModule, Routes } from '@angular/router';
-
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdButtonModule, MdCheckboxModule, MatInputModule } from '@angular/material';
 
@@ -13,7 +13,7 @@ import { OauthComponent } from './oauth/oauth.component';
 import { IntroComponent } from './intro/intro.component';
 
 const appRoutes: Routes = [
- 
+
   { path: '', component: IntroComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
@@ -34,11 +34,12 @@ const appRoutes: Routes = [
   imports: [
     RouterModule.forRoot( //for routing
       appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
+      { enableTracing: false } // <-- debugging purposes only
     ),
     BrowserModule,
     BrowserAnimationsModule,
-    MdButtonModule, MdCheckboxModule, MatInputModule
+    MdButtonModule, MdCheckboxModule, MatInputModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
