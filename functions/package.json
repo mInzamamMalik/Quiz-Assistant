@@ -8,7 +8,9 @@
     "test": "./node_modules/.bin/mocha --reporter spec"
   },
   "dependencies": {
+    "@types/bcrypt-nodejs": "0.0.30",
     "@types/cors": "^2.8.1",
+    "bcrypt-nodejs": "0.0.3",
     "cors": "^2.8.4",
     "firebase-admin": "^4.1.2",
     "firebase-functions": "^0.5"
