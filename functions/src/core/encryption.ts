@@ -1,6 +1,6 @@
 import * as bcrypt from "bcrypt-nodejs";
 
-class encryption {
+export class encryption {
 
     static stringToHash = (PasswordString: string) => {
         return new Promise((resolve, reject) => {
