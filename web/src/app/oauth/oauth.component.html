@@ -4,37 +4,38 @@
   </h4>
   <p>OAuth.2.0</p>
   <h1>Login:</h1>
-
+  <!-- (ngSubmit)="getTokenFromServer()" -->
   <form (ngSubmit)="getTokenFromServer()">
-    <md-form-field class="example-full-width">
+    <md-form-field>
+      <input mdInput name='email' type="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" placeholder="Email" #userEmail="ngModel"
+        required [(ngModel)]="userInfo.email">
 
-      <input mdInput placeholder="Email" [formControl]="emailFormControl">
-
-      <md-error *ngIf="emailFormControl.hasError('pattern')">
+      <md-error *ngIf="userEmail.errors?.pattern">
         Please enter a valid email address
       </md-error>
 
-      <md-error *ngIf="emailFormControl.hasError('required')">
+      <md-error *ngIf="userEmail.errors?.required">
         Email is <strong>required</strong>
+      </md-error>
+    </md-form-field>
+
+    <md-form-field>
+      <input mdInput required name='password' type='password' #userPassword="ngModel" placeholder="Password" [(ngModel)]="userInfo.password">
+
+      <md-error *ngIf="userPassword.errors?.required">
+        Password is <strong>required</strong>
       </md-error>
 
     </md-form-field>
-  </form>
-
-
-
-  <form class="example-form">
-
-
-
-    <md-form-field>
-      <input mdInput placeholder="Password">
-    </md-form-field>
 
     <br>
-    <button md-raised-button color="primary">Login</button>
+    <button md-raised-button color="primary" [disabled]='userEmail.errors?.pattern || userEmail.errors?.required || userPassword.errors?.required'>Login</button>
   </form>
 
   <br>
-  <a href="https://inzi-quiz-assistant.firebaseapp.com/signup">dont have an account? goto website to create one</a>
+  <!-- 
+  <pre>{{userEmail.errors | json}}</pre>
+  <pre>{{userPassword.errors | json}}</pre> -->
+
+  <a href="https://inzi-quiz-assistant.firebaseapp.com/signup ">dont have an account? goto website to create one</a>
 </div>

@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router'
 import { HttpClient } from '@angular/common/http'
 
-const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
 @Component({
   selector: 'app-oauth',
@@ -12,21 +11,34 @@ const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA
 })
 export class OauthComponent implements OnInit {
 
+  userInfo: { email: string, password: string } = {
+    email: '',
+    password: ''
+  };
+
+  constructor(
+    private route: ActivatedRoute,
+    private http: HttpClient,
+  ) { }
+
   private client_id;
   private redirect_uri;
   private state;
   private response_type;
+  // loginForm = new FormGroup({
+  //   'emailFormControl': new FormControl('emailFormControl', [Validators.required, Validators.email]),
+  //   'passwordFormControl': new FormControl('passwordFormControl', [Validators.required]),
+  // });
 
-  emailFormControl = new FormControl('', [
-    Validators.required,
-    Validators.pattern(EMAIL_REGEX)]);
-
-
-
-  constructor(private route: ActivatedRoute, private http: HttpClient) { }
+  loginForm = new FormGroup({
+    emailFormControl: new FormControl()
+  });
 
   ngOnInit() {
-    // Capture the access token and code
+    // this.userInfo.email = '';
+    // this.userInfo.password = '';
+
+    // Capture the parameters from url query string
     this.route
       .queryParams
       .subscribe(params => {
@@ -39,15 +51,17 @@ export class OauthComponent implements OnInit {
     // do something with this.code and this.accesstoken
   }
 
+  
   getTokenFromServer() {
 
-    this.http.get('http://google.com')
-      .subscribe(data => {
-        // Read the result field from the JSON response.
-        console.log("response: ", data['results'])
-        // window.location.href = `https://oauth-redirect.googleusercontent.com/r/inzi-quiz-assistant#access_token=${client_id}&token_type=bearer&state=${state}`
-        window.location.href = 'https://youtube.com'
-      });
+    console.warn('FORNSSS', this.userInfo);   
+    // this.http.get('http://google.com')
+    //   .subscribe(data => {
+    //     // Read the result field from the JSON response.
+    //     console.log("response: ", data['results'])
+    //     // window.location.href = `https://oauth-redirect.googleusercontent.com/r/inzi-quiz-assistant#access_token=${client_id}&token_type=bearer&state=${state}`
+    //     window.location.href = 'https://youtube.com'
+    //   });
 
 
   }
