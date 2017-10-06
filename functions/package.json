@@ -4,7 +4,7 @@
   "scripts": {
     "start": "",
     "build": "webpack --watch",
-    "deploy": "firebase deploy --only functions",
+    "deploy": "webpack && firebase deploy --only functions",
     "test": "./node_modules/.bin/mocha --reporter spec"
   },
   "dependencies": {
