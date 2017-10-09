@@ -59,12 +59,16 @@ export class OauthComponent implements OnInit {
       "email": this.userInfo.email,
       "password": this.userInfo.password
     })
-      .subscribe(data => {
+      .subscribe((data: any) => {
         // Read the result field from the JSON response.
-        console.log("response: ", data['results'])
-        if (data['results']['customToken']) {
+        console.log("response: ", data.uid)
+        
+        let token = data['customToken']
+        console.log("token: ", token)
 
-          window.location.href = `https://oauth-redirect.googleusercontent.com/r/inzi-quiz-assistant#access_token=${data['results']['customToken']}&token_type=bearer&state=${this.state}`
+        if (token) {
+          console.log("redirecting")
+          window.location.href = `https://oauth-redirect.googleusercontent.com/r/inzi-quiz-assistant#access_token=${token}&token_type=bearer&state=${this.state}`
         }
         // window.location.href = 'https://youtube.com'
       });
