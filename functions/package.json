@@ -12,6 +12,7 @@
     "@types/cors": "^2.8.1",
     "bcrypt-nodejs": "0.0.3",
     "cors": "^2.8.4",
+    "firebase": "^4.5.0",
     "firebase-admin": "^4.1.2",
     "firebase-functions": "^0.5"
   },
