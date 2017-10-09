@@ -51,17 +51,23 @@ export class OauthComponent implements OnInit {
     // do something with this.code and this.accesstoken
   }
 
-  
+
   getTokenFromServer() {
 
-    console.warn('FORNSSS', this.userInfo);   
-    // this.http.get('http://google.com')
-    //   .subscribe(data => {
-    //     // Read the result field from the JSON response.
-    //     console.log("response: ", data['results'])
-    //     // window.location.href = `https://oauth-redirect.googleusercontent.com/r/inzi-quiz-assistant#access_token=${client_id}&token_type=bearer&state=${state}`
-    //     window.location.href = 'https://youtube.com'
-    //   });
+    console.warn('FORNSSS', this.userInfo);
+    this.http.post('https://us-central1-inzi-quiz-assistant.cloudfunctions.net/login', {
+      "email": this.userInfo.email,
+      "password": this.userInfo.password
+    })
+      .subscribe(data => {
+        // Read the result field from the JSON response.
+        console.log("response: ", data['results'])
+        if (data['results']['customToken']) {
+
+          window.location.href = `https://oauth-redirect.googleusercontent.com/r/inzi-quiz-assistant#access_token=${data['results']['customToken']}&token_type=bearer&state=${this.state}`
+        }
+        // window.location.href = 'https://youtube.com'
+      });
 
 
   }
