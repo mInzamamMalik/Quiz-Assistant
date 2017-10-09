@@ -10,11 +10,14 @@
   "dependencies": {
     "@types/bcrypt-nodejs": "0.0.30",
     "@types/cors": "^2.8.1",
+    "@types/request": "^2.0.4",
+    "actions-on-google": "^1.4.0",
     "bcrypt-nodejs": "0.0.3",
     "cors": "^2.8.4",
     "firebase": "^4.5.0",
     "firebase-admin": "^4.1.2",
-    "firebase-functions": "^0.5"
+    "firebase-functions": "^0.5",
+    "request": "^2.83.0"
   },
   "private": true,
   "devDependencies": {

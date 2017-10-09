@@ -11,6 +11,8 @@ let admin = _admin.initializeApp({
     databaseURL: "https://inzi-quiz-assistant.firebaseio.com"
 });
 export { admin }
+export let adminauth = admin.auth();
+export let admindb = admin.database().ref('/');
 
 let config = {
     apiKey: "AIzaSyAFOf27clnj39WcgzdSVMYw_smjt_ANRrE",
@@ -22,8 +24,9 @@ let config = {
 };
 let firebase = _firebase.initializeApp(config);
 export { firebase }
+export let auth = firebase.auth();
+export let db = firebase.database().ref('/');
 
 
-export let auth = admin.auth();
-const db = admin.database();
-export default db;
+
+
