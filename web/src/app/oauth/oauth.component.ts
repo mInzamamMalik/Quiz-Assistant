@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router'
 import { HttpClient } from '@angular/common/http'
+import { AngularFireAuth } from 'angularfire2/auth';
 
 
 @Component({
@@ -19,6 +20,7 @@ export class OauthComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private http: HttpClient,
+    public afAuth: AngularFireAuth
   ) { }
 
   private client_id;
@@ -55,26 +57,14 @@ export class OauthComponent implements OnInit {
   getTokenFromServer() {
 
     console.warn('FORNSSS', this.userInfo);
-    this.http.post('https://us-central1-inzi-quiz-assistant.cloudfunctions.net/login', {
-      "email": this.userInfo.email,
-      "password": this.userInfo.password
-    })
-      .subscribe((data: any) => {
-        // Read the result field from the JSON response.
-        console.log("response: ", data.uid)
-        
-        let token = data['customToken']
-        console.log("token: ", token)
 
-        if (token) {
-          console.log("redirecting")
-          window.location.href = `https://oauth-redirect.googleusercontent.com/r/inzi-quiz-assistant#access_token=${token}&token_type=bearer&state=${this.state}`
-        }
-        // window.location.href = 'https://youtube.com'
-      });
-
-
+    this.afAuth.auth.signInWithEmailAndPassword(this.userInfo.email, this.userInfo.password)
+      .then(onfulfill => {
+        this.afAuth.auth.currentUser.getIdToken(true)
+          .then(idToken => {
+            console.log("idToken: ", idToken)
+            window.location.href = `https://oauth-redirect.googleusercontent.com/r/inzi-quiz-assistant#access_token=${idToken}&token_type=bearer&state=${this.state}`
+          })
+      })
   }
-
-
 }
