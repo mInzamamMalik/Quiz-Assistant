@@ -8,19 +8,19 @@ import * as _firebase from "firebase";
 var serviceAccount = require("./serviceAccount.json");
 let admin = _admin.initializeApp({
     credential: _admin.credential.cert(serviceAccount),
-    databaseURL: "https://inzi-quiz-assistant.firebaseio.com"
+    databaseURL: "https://quiz-assistant-444c4.firebaseio.com"
 });
 export { admin }
 export let adminauth = admin.auth();
 export let admindb = admin.database().ref('/');
 
 let config = {
-    apiKey: "AIzaSyAFOf27clnj39WcgzdSVMYw_smjt_ANRrE",
-    authDomain: "inzi-quiz-assistant.firebaseapp.com",
-    databaseURL: "https://inzi-quiz-assistant.firebaseio.com",
-    projectId: "inzi-quiz-assistant",
-    storageBucket: "inzi-quiz-assistant.appspot.com",
-    messagingSenderId: "190190683842"
+    apiKey: "AIzaSyC-A0avoEVDjmGg81UO9zYzw3As4YLTqkk",
+    authDomain: "quiz-assistant-444c4.firebaseapp.com",
+    databaseURL: "https://quiz-assistant-444c4.firebaseio.com",
+    projectId: "quiz-assistant-444c4",
+    storageBucket: "",
+    messagingSenderId: "829690274579"
 };
 let firebase = _firebase.initializeApp(config);
 export { firebase }

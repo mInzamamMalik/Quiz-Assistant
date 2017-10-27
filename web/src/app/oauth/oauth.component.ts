@@ -58,13 +58,23 @@ export class OauthComponent implements OnInit {
 
     console.warn('FORNSSS', this.userInfo);
 
-    this.afAuth.auth.signInWithEmailAndPassword(this.userInfo.email, this.userInfo.password)
-      .then(onfulfill => {
-        this.afAuth.auth.currentUser.getIdToken(true)
-          .then(idToken => {
-            console.log("idToken: ", idToken)
-            window.location.href = `https://oauth-redirect.googleusercontent.com/r/inzi-quiz-assistant#access_token=${idToken}&token_type=bearer&state=${this.state}`
-          })
-      })
+    if (this.client_id == '829690274579-j8uaqsstl73qc1mhmofta3d2g5mubjgj.apps.googleusercontent.com' &&
+      this.redirect_uri == 'https://oauth-redirect.googleusercontent.com/r/quiz-assistant-59671') {
+
+      this.afAuth.auth.signInWithEmailAndPassword(this.userInfo.email, this.userInfo.password)
+        .then(onfulfill => {
+          this.afAuth.auth.currentUser.getIdToken(true)
+            .then(idToken => {
+              console.log("idToken: ", idToken)
+              // window.location.href = `https://oauth-redirect.googleusercontent.com/r/inzi-quiz-assistant#access_token=${idToken}&token_type=bearer&state=${this.state}`
+              window.location.href = `https://oauth-redirect.googleusercontent.com/r/quiz-assistant-59671?code=${idToken}&state=${this.state}`
+            })
+        })
+    }
+    else{
+      console.log('Incorrect cliend_id or redirect uri ');
+      console.log('client_id ', this.client_id);
+      console.log('client_secret ', this.redirect_uri);
+    }
   }
 }

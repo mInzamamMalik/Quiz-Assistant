@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "inzi-quiz-assistant"
+    "default": "inzi-quiz-assistant",
+    "rosh-quiz-assistant": "quiz-assistant-444c4"
   }
 }

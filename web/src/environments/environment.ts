@@ -6,11 +6,11 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyAFOf27clnj39WcgzdSVMYw_smjt_ANRrE",
-    authDomain: "inzi-quiz-assistant.firebaseapp.com",
-    databaseURL: "https://inzi-quiz-assistant.firebaseio.com",
-    projectId: "inzi-quiz-assistant",
-    storageBucket: "inzi-quiz-assistant.appspot.com",
-    messagingSenderId: "190190683842"
+    apiKey: "AIzaSyC-A0avoEVDjmGg81UO9zYzw3As4YLTqkk",
+    authDomain: "quiz-assistant-444c4.firebaseapp.com",
+    databaseURL: "https://quiz-assistant-444c4.firebaseio.com",
+    projectId: "quiz-assistant-444c4",
+    storageBucket: "quiz-assistant-444c4.appspot.com",
+    messagingSenderId: "829690274579"
   }
 };
